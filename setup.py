@@ -45,13 +45,13 @@ with open("README.md", "r") as f:
 
 
 setup(
-    name='hardware-components',
+    name='abstract-hardware-interface',
     version=version,
     license='BSD-3',
     author='Neongecko',
     author_email='developers@neon.ai',
-    url='https://github.com/NeonGeckoCom/hardware-components',
-    description='Hardware Component Classes',
+    url='https://github.com/NeonGeckoCom/abstract-hardware-interface',
+    description='Abstract Hardware Component Classes',
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(),
