@@ -53,7 +53,7 @@ class LedAnimation:
         # TODO: Get state before animation and restore it here
 
 
-class BreatheLed(LedAnimation):
+class BreatheLedAnimation(LedAnimation):
     def __init__(self, leds: AbstractLed, color: Color):
         LedAnimation.__init__(self, leds)
         self.color_tuple = color.value
@@ -82,7 +82,7 @@ class BreatheLed(LedAnimation):
         self.stopping.set()
 
 
-class ChaseLed(LedAnimation):
+class ChaseLedAnimation(LedAnimation):
     def __init__(self, leds: AbstractLed, foreground_color: Color,
                  background_color: Color = Color.BLACK):
         LedAnimation.__init__(self, leds)
