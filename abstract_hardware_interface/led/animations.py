@@ -56,9 +56,9 @@ class LedAnimation:
 class BreatheLedAnimation(LedAnimation):
     def __init__(self, leds: AbstractLed, color: Color):
         LedAnimation.__init__(self, leds)
-        self.color_tuple: tuple = color.value
+        self.color_tuple = color.as_rgb_tuple()
         self.step = 0.05
-        self.step_delay = 0.1
+        self.step_delay = 0.05
         self.stopping = Event()
 
     def start(self, timeout=None):
@@ -88,8 +88,8 @@ class ChaseLedAnimation(LedAnimation):
     def __init__(self, leds: AbstractLed, foreground_color: Color,
                  background_color: Color = Color.BLACK):
         LedAnimation.__init__(self, leds)
-        self.foreground_color_tuple: tuple = foreground_color.value
-        self.background_color_tuple: tuple = background_color.value
+        self.foreground_color_tuple: tuple = foreground_color.as_rgb_tuple()
+        self.background_color_tuple: tuple = background_color.as_rgb_tuple()
         self.step = 0.05
         self.step_delay = 0.1
         self.stopping = Event()
@@ -115,7 +115,7 @@ class LoopFillLedAnimation(LedAnimation):
     def __init__(self, leds: AbstractLed, fill_color: Color,
                  reverse: bool = False):
         LedAnimation.__init__(self, leds)
-        self.fill_color_tuple: tuple = fill_color.value
+        self.fill_color_tuple = fill_color.as_rgb_tuple()
         self.reverse = reverse
         self.step_delay = 0.02
 
@@ -129,3 +129,10 @@ class LoopFillLedAnimation(LedAnimation):
 
     def stop(self):
         pass
+
+
+animations = {
+    'breathe': BreatheLedAnimation,
+    'chase': ChaseLedAnimation,
+    'loop_fill': LoopFillLedAnimation
+}

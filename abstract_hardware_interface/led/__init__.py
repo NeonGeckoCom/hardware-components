@@ -32,6 +32,10 @@ from typing import Union
 
 
 class Color(Enum):
+    """
+    Enum class for colors. In the future, this can support getting equivalent
+    colors in hex format, GRB format, etc.
+    """
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
 
@@ -44,6 +48,29 @@ class Color(Enum):
     CYAN = (0, 255, 255)
 
     BURNT_ORANGE = (173, 64, 0)
+
+    MYCROFT_BLUE = (34, 167, 240)
+    NEON_ORANGE = (255, 134, 0)
+    OVOS_RED = (255, 26, 26)
+
+    def as_rgb_tuple(self) -> tuple:
+        """
+        Get an rgb tuple representation of the color.
+        """
+        assert isinstance(self.value, tuple)
+        return self.value
+
+    @classmethod
+    def from_name(cls, color: str):
+        """
+        Get a Color object by name.
+        :param color: string color corresponding on a name in the Color enum
+        :returns: Color enum object for the requested string color
+        """
+        for c in cls:
+            if c.name.lower() == color.lower():
+                return c
+        raise ValueError(f'{color} is not a valid Color')
 
 
 class AbstractLed:
