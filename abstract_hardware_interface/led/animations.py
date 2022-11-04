@@ -88,8 +88,8 @@ class ChaseLedAnimation(LedAnimation):
     def __init__(self, leds: AbstractLed, foreground_color: Color,
                  background_color: Color = Color.BLACK):
         LedAnimation.__init__(self, leds)
-        self.foreground_color_tuple = foreground_color.value
-        self.background_color_tuple = background_color.value
+        self.foreground_color_tuple: tuple = foreground_color.value
+        self.background_color_tuple: tuple = background_color.value
         self.step = 0.05
         self.step_delay = 0.1
         self.stopping = Event()
@@ -100,7 +100,7 @@ class ChaseLedAnimation(LedAnimation):
 
         self.leds.fill(self.background_color_tuple)
         while not self.stopping.is_set():
-            for led in range(0, len(self.leds.num_leds)):
+            for led in range(0, self.leds.num_leds):
                 self.leds.set_led(led, self.foreground_color_tuple)
                 sleep(self.step_delay)
                 self.leds.set_led(led, self.background_color_tuple)
@@ -120,7 +120,7 @@ class LoopFillLedAnimation(LedAnimation):
         self.step_delay = 0.02
 
     def start(self, timeout=None):
-        leds = list(range(0, len(self.leds.num_leds)))
+        leds = list(range(0, self.leds.num_leds))
         if self.reverse:
             leds.reverse()
         for led in leds:
