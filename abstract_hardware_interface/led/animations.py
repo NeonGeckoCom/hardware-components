@@ -108,3 +108,22 @@ class ChaseLedAnimation(LedAnimation):
     def stop(self):
         self.stopping.set()
 
+
+class LoopFillLedAnimation(LedAnimation):
+    def __init__(self, leds: AbstractLed, fill_color: Color,
+                 reverse: bool = False):
+        LedAnimation.__init__(self, leds)
+        self.fill_color_tuple = fill_color.value
+        self.reverse = reverse
+        self.step_delay = 0.02
+
+    def start(self, timeout=None):
+        leds = list(range(0, len(self.leds.num_leds)))
+        if self.reverse:
+            leds.reverse()
+        for led in leds:
+            self.leds.set_led(led, self.fill_color_tuple)
+            sleep(self.step_delay)
+
+    def stop(self):
+        pass
