@@ -31,7 +31,7 @@ from enum import Enum
 from typing import Union
 
 
-class Color(Enum, tuple):
+class Color(Enum):
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
 
