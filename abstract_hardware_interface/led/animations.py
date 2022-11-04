@@ -80,6 +80,8 @@ class BreatheLedAnimation(LedAnimation):
 
     def stop(self):
         self.stopping.set()
+        # TODO: Get LED state at start and restore it here
+        self.leds.fill(Color.BLACK)
 
 
 class ChaseLedAnimation(LedAnimation):
