@@ -31,7 +31,7 @@ from threading import Event
 from time import time, sleep
 from typing import Optional
 
-from hardware_components.led import AbstractLed, Color
+from abstract_hardware_interface.led import AbstractLed, Color
 
 
 class LedAnimation:
