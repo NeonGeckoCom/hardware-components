@@ -28,7 +28,6 @@
 
 from abc import abstractmethod
 from enum import Enum
-from typing import Union
 
 
 class Color(Enum):
@@ -100,10 +99,10 @@ class AbstractLed:
     # TODO: get_led?
 
     @abstractmethod
-    def fill(self, color: Union[Color, tuple]):
+    def fill(self, color: tuple):
         """
         Set all LEDs to a particular color.
-        :param color: RGB color value as Color or tuple of ints
+        :param color: RGB color value as a tuple of ints
         """
 
     @abstractmethod
