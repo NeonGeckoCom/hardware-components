@@ -76,12 +76,12 @@ class BreatheLedAnimation(LedAnimation):
             self.leds.fill(tuple(brightness * part for part in self.color_tuple))
             sleep(self.step_delay)
             if end_time and time() > end_time:
-                self.stopping.set()
+                self.stop()
 
     def stop(self):
         self.stopping.set()
         # TODO: Get LED state at start and restore it here
-        self.leds.fill(Color.BLACK)
+        self.leds.fill(Color.BLACK.as_rgb_tuple())
 
 
 class ChaseLedAnimation(LedAnimation):
@@ -105,7 +105,7 @@ class ChaseLedAnimation(LedAnimation):
                 sleep(self.step_delay)
                 self.leds.set_led(led, self.background_color_tuple)
             if end_time and time() > end_time:
-                self.stopping.set()
+                self.stop()
 
     def stop(self):
         self.stopping.set()
