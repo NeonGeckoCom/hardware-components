@@ -27,12 +27,13 @@
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from setuptools import setup, find_packages
-from os import path, getenv
+from os import path
+
 
 BASEDIR = path.abspath(path.dirname(__file__))
 
 
-with open("./version.py", "r", encoding="utf-8") as v:
+with open(path.join(BASEDIR, "version.py"), "r", encoding="utf-8") as v:
     for line in v.readlines():
         if line.startswith("__version__"):
             if '"' in line:
@@ -40,7 +41,7 @@ with open("./version.py", "r", encoding="utf-8") as v:
             else:
                 version = line.split("'")[1]
 
-with open("README.md", "r") as f:
+with open(path.join(BASEDIR, "README.md"), "r") as f:
     long_description = f.read()
 
 
